@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | FnB Fusion</title>
+    <meta name="description" content="Photos and diagrams of Drink Fusion by category: machines, market, customers, themes and roadmap.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Pirata+One&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+    sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+    display: ['"Space Grotesk"', 'sans-serif'],
+    gothic: ['"UnifrakturCook"', '"Pirata One"', 'serif'],
+},
+                    colors: {
+                        gold: {
+                            100: '#FDF7E7',
+                            200: '#F9EBC5',
+                            300: '#F4DC9A',
+                            400: '#ECC870',
+                            500: '#D4AF37', /* Pure Royal Gold */
+                            600: '#B89228',
+                            700: '#94721C',
+                            800: '#735613',
+                            900: '#4F3908',
+                        },
+                        obsidian: {
+                            base: '#08080A',
+                            surface: 'rgba(15, 15, 20, 0.82)',
+                            card: 'rgba(22, 22, 28, 0.82)',
+                            subtle: '#212126',
+                            border: 'rgba(212, 175, 55, 0.25)',
+                            borderLight: 'rgba(212, 175, 55, 0.45)',
+                        }
+                    },
+                    boxShadow: {
+                        'gold-sm': '0 2px 10px -2px rgba(212, 175, 55, 0.15)',
+                        'gold-md': '0 8px 30px -4px rgba(212, 175, 55, 0.22)',
+                        'gold-lg': '0 20px 50px -10px rgba(212, 175, 55, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #08080A;
+            color: #FDF7E7;
+            position: relative;
+        }
+
+        /* FIXED STATIC SILHOUETTE BACKGROUND (DARI FOTO ASLI UPLOAD) */
+        .fixed-silhouette-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('drink-fusion-machine.jpg');
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: grayscale(100%) contrast(150%) brightness(55%);
+            opacity: 0.38;
+            pointer-events: none;
+            z-index: 0;
+            transform: translateZ(0);
+        }
+
+        /* AMBIENT GOLD TINT OVERLAY */
+        .silhouette-gold-tint {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 45%, rgba(212, 175, 55, 0.08) 0%, rgba(8, 8, 10, 0.55) 50%, rgba(8, 8, 10, 0.88) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF3D1 0%, #F4DC9A 30%, #D4AF37 70%, #AA8022 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #ECC870 0%, #D4AF37 60%, #AA8022 100%);
+        }
+        .glass-dark {
+            background: rgba(14, 14, 18, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .photo-placeholder-gold {
+            background: linear-gradient(135deg, rgba(17, 17, 20, 0.85) 0%, rgba(22, 22, 26, 0.85) 100%);
+            border: 2px dashed rgba(212, 175, 55, 0.35);
+            transition: all 0.3s ease;
+        }
+        .photo-placeholder-gold:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111114;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 8px;
+        }
+
+        .tier-btn { border: 1px solid rgba(212,175,55,.35); color: #F9EBC5; background: rgba(8,8,10,.6); }
+        .tier-btn.active { background: linear-gradient(135deg,#ECC870,#D4AF37 60%,#AA8022); color: #000; border-color: #D4AF37; font-weight: 800; }
+        .fld { width: 100%; background: #08080A; border: 1px solid rgba(212,175,55,.3); border-radius: .75rem; padding: .625rem 1rem; font-size: .75rem; color: #FDF7E7; }
+        .fld:focus { outline: none; border-color: #D4AF37; box-shadow: 0 0 0 1px #D4AF37; }
+        input[type=range] { accent-color: #D4AF37; }
+        .table-scroll { overflow-x: auto; }
+        /* Hide Google Translate's own UI; our dropdown controls it */
+        .goog-te-banner-frame, .goog-te-balloon-frame, #goog-gt-tt, .goog-tooltip, iframe.skiptranslate { display: none !important; }
+        body { top: 0 !important; }
+        .goog-text-highlight { background: none !important; box-shadow: none !important; }
+    </style>
+</head>
+<body class="bg-obsidian-base text-gold-100 font-sans antialiased overflow-x-hidden selection:bg-gold-500 selection:text-black">
+    <div id="google_translate_element" class="notranslate" translate="no" style="position:absolute;left:-9999px;top:0;width:0;height:0;overflow:hidden"></div>
+
+    <!-- FIXED STILL SILHOUETTE LAYERS (FOTO MESIN ASLI) -->
+    <div class="fixed-silhouette-bg" aria-hidden="true"></div>
+    <div class="silhouette-gold-tint" aria-hidden="true"></div>
+
+    <!-- MAIN PAGE CONTENT (RELATIVE Z-10) -->
+    <div class="relative z-10">
+        <header class="sticky top-0 z-50 glass-dark border-b border-gold-500/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3"><img src="logofnb.png" alt="FnB Fusion Logo" class="w-12 h-12 object-contain drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]"><span class="font-display font-extrabold text-xl text-white notranslate" translate="no">FnB<span class="text-gold-gradient">&nbsp;Fusion</span></span></a>
+                <nav class="flex items-center gap-4 sm:gap-6 text-xs font-semibold uppercase tracking-wider text-gold-200">
+                    <a href="index.html" class="hover:text-gold-400">Home</a><a href="founder.html" class="hover:text-gold-400">Founders</a><a href="galeri.html" class="hover:text-gold-400">Gallery</a><a href="language.html" class="hover:text-gold-400">Language</a>
+                    <a href="index.html#kontak" class="hidden sm:inline-block px-4 py-2 rounded-xl bg-gold-gradient text-black font-extrabold">Contact</a>
+                </nav>
+            </div>
+        </header>
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-14">
+                <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold-400 bg-gold-500/10 px-3.5 py-1 rounded-full border border-gold-500/30">Gallery</div>
+                <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">Photos &amp; Diagrams <span class="text-gold-gradient">by Category</span></h1>
+                <p class="text-gold-100/80 text-sm leading-relaxed">Click any image to enlarge it. Diagram labels are in Indonesian, exactly as in the original proposal.</p>
+            </div>
+            <section class="mb-16"><h2 class="font-display font-bold text-2xl text-white">Machine Photos</h2><p class="text-xs text-gold-200/70 mt-1 mb-6">Drink Fusion stations in real settings.</p><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="drink-fusion-machine.jpg"><img src="drink-fusion-machine.jpg" alt="Drink Fusion: AI avatar, 32-inch touchscreen and transparent robot chamber" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Drink Fusion: AI avatar, 32-inch touchscreen and transparent robot chamber</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="drink-fusion-noir.jpg"><img src="drink-fusion-noir.jpg" alt="Drink Fusion NOIR: the luxury theme in a premium lobby" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Drink Fusion NOIR: the luxury theme in a premium lobby</figcaption></figure></div></section><section class="mb-16"><h2 class="font-display font-bold text-2xl text-white">Market &amp; Competition</h2><p class="text-xs text-gold-200/70 mt-1 mb-6">Where Drink Fusion sits in the Indonesian market.</p><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="pasar-tam-sam-som.jpg"><img src="pasar-tam-sam-som.jpg" alt="Market size: TAM, SAM and SOM" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Market size: TAM, SAM and SOM</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="tren-otomasi-fnb.jpg"><img src="tren-otomasi-fnb.jpg" alt="Megatrends converging on F&amp;B automation in Indonesia" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Megatrends converging on F&amp;B automation in Indonesia</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="evolusi-vending-indonesia.jpg"><img src="evolusi-vending-indonesia.jpg" alt="Evolution of vending machines in Indonesia" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Evolution of vending machines in Indonesia</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="peta-posisi-kompetitif.jpg"><img src="peta-posisi-kompetitif.jpg" alt="Competitive positioning map of automatic beverages" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Competitive positioning map of automatic beverages</figcaption></figure></div></section><section class="mb-16"><h2 class="font-display font-bold text-2xl text-white">Customers &amp; Themes</h2><p class="text-xs text-gold-200/70 mt-1 mb-6">Who we serve and how themes fit each audience.</p><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="target-pelanggan.jpg"><img src="target-pelanggan.jpg" alt="Target customers: franchisees and brand owners" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Target customers: franchisees and brand owners</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="peta-segmentasi-4-tema.jpg"><img src="peta-segmentasi-4-tema.jpg" alt="Segmentation map of the 4 franchise themes" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Segmentation map of the 4 franchise themes</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="ekosistem-pelanggan.jpg"><img src="ekosistem-pelanggan.jpg" alt="Drink Fusion customer ecosystem" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Drink Fusion customer ecosystem</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="loop-loyalitas.jpg"><img src="loop-loyalitas.jpg" alt="Loyalty loop: community, data, emotion, royalties" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Loyalty loop: community, data, emotion, royalties</figcaption></figure></div></section><section class="mb-16"><h2 class="font-display font-bold text-2xl text-white">Strengths &amp; Roadmap</h2><p class="text-xs text-gold-200/70 mt-1 mb-6">Why Drink Fusion is hard to copy, and where it is going.</p><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="economic-moat.jpg"><img src="economic-moat.jpg" alt="Economic moat of Drink Fusion" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Economic moat of Drink Fusion</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="entry-barrier.jpg"><img src="entry-barrier.jpg" alt="Entry barriers for new competitors" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Entry barriers for new competitors</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="roadmap-ekspansi-5-tahun.jpg"><img src="roadmap-ekspansi-5-tahun.jpg" alt="5-year expansion roadmap" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">5-year expansion roadmap</figcaption></figure><figure class="bg-obsidian-card border border-gold-500/25 rounded-3xl p-6 hover:border-gold-500/60 hover:shadow-gold-md transition !p-3 cursor-zoom-in" data-zoom="roadmap-masa-depan.jpg"><img src="roadmap-masa-depan.jpg" alt="Future roadmap: Drink Fusion, Food Fusion and the automated F&amp;B ecosystem" loading="lazy" class="w-full h-48 object-contain rounded-xl bg-white/95"><figcaption class="text-xs text-gold-100/80 mt-3 px-1 leading-snug">Future roadmap: Drink Fusion, Food Fusion and the automated F&amp;B ecosystem</figcaption></figure></div></section>
+        </main>
+        <div id="lightbox" class="hidden fixed inset-0 z-[100] bg-black/90 items-center justify-center p-4 cursor-zoom-out"><img id="lbImg" src="" alt="" class="max-w-full max-h-full rounded-xl bg-white"></div>
+        <footer class="bg-black/95 text-gold-300 text-xs py-8 border-t border-gold-500/20 text-center"><p class="text-gold-200/60">© 2026 PT SUKA SUKA MAKAN MINUM. All rights reserved.</p></footer>
+    </div>
+    <script>
+(function(){var l=document.getElementById('lightbox'),i=document.getElementById('lbImg');
+document.querySelectorAll('[data-zoom]').forEach(function(f){f.addEventListener('click',function(){i.src=f.dataset.zoom;l.classList.remove('hidden');l.classList.add('flex');});});
+function c(){l.classList.add('hidden');l.classList.remove('flex');}
+l.addEventListener('click',c);document.addEventListener('keydown',function(e){if(e.key==='Escape')c();});})();
+</script><script>
+(function(){var c=null;try{c=localStorage.getItem('fnb_lang');}catch(e){}
+var q=new URLSearchParams(location.search).get('lang');c=q||c;if(!c||c==='en')return;
+window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element');};
+var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';document.head.appendChild(s);
+var n=0,t=setInterval(function(){var e=document.querySelector('select.goog-te-combo');if(e){clearInterval(t);e.value=c;e.dispatchEvent(new Event('change'));}else if(++n>50)clearInterval(t);},200);})();
+</script>
+</body>
+</html>
